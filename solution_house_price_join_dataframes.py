@@ -1,0 +1,1 @@
+house_prices_nextyear_df.groupBy("bedrooms").mean("new_price").show()
