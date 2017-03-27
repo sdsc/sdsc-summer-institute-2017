@@ -12,7 +12,7 @@
 ##SBATCH --reservation=SI2016D3Morning
 #SBATCH -t 04:00:00
 
-module load python scipy
+module load anaconda
 
 ### Environment setup for Hadoop and Spark
 sleep 10
@@ -36,7 +36,7 @@ source $HADOOP_CONF_DIR/spark/spark-env.sh
 myspark start
 
 ### Launch pyspark with IPython Notebook frontend
-PYSPARK_DRIVER_PYTHON=ipython PYSPARK_DRIVER_PYTHON_OPTS="notebook --no-browser --ip=*" pyspark
+PYSPARK_DRIVER_PYTHON=jupyter PYSPARK_DRIVER_PYTHON_OPTS="notebook --no-browser --ip=*" pyspark
 
 # ### Shut down Spark and HDFS
 # myspark stop
