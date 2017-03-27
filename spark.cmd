@@ -3,24 +3,24 @@
 #  Designed to run on SDSC's Comet resource.
 #  Mahidhar Tatineni, Andrea Zonca, San Diego Supercomputer Center Aug 2016
 ################################################################################
-#SBATCH --job-name="spark-demo"
-#SBATCH --output="spark-demo.%j.%N.out"
+#SBATCH --job-name="spark"
+#SBATCH --output="spark.%j.%N.out"
 #SBATCH --partition=compute
 #SBATCH --nodes=2
 #SBATCH --ntasks-per-node=24
 #SBATCH --export=ALL
-#SBATCH --reservation=SI2016D3Morning
+##SBATCH --reservation=SI2016D3Morning
 #SBATCH -t 04:00:00
 
 module load python scipy
 
 ### Environment setup for Hadoop and Spark
 sleep 10
-module load spark/1.5.2
+export MODULEPATH=/share/apps/compute/modulefiles/applications:$MODULEPATH
+module load spark/2.1.0
 export PATH=/opt/hadoop/2.6.0/sbin:$PATH
 export HADOOP_CONF_DIR=$HOME/mycluster.conf
 export WORKDIR=`pwd`
-export SPARK_HOME=/opt/spark/1.5.2/
 
 myhadoop-configure.sh
 
