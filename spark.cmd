@@ -28,6 +28,7 @@ myhadoop-configure.sh
 ### standalone mode on our cluster.
 start-dfs.sh
 
+echo "export PYTHONHASHSEED=0" >> $HADOOP_CONF_DIR/spark/spark-env.sh
 ### Load in the necessary Spark environment variables
 source $HADOOP_CONF_DIR/spark/spark-env.sh
 
