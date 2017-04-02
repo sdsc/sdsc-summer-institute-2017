@@ -9,7 +9,7 @@
 #SBATCH --nodes=2
 #SBATCH --ntasks-per-node=24
 #SBATCH --export=ALL
-##SBATCH --reservation=SI2016D3Morning
+#SBATCH --reservation=UCLARes
 #SBATCH -t 04:00:00
 
 module load anaconda
