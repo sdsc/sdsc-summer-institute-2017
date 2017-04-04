@@ -12,11 +12,11 @@
 #SBATCH --reservation=UCLARes
 #SBATCH -t 04:00:00
 
+export MODULEPATH=/share/apps/compute/modulefiles/applications:$MODULEPATH
 module load anaconda
 
 ### Environment setup for Hadoop and Spark
 sleep 10
-export MODULEPATH=/share/apps/compute/modulefiles/applications:$MODULEPATH
 module load spark/2.1.0
 export PATH=/opt/hadoop/2.6.0/sbin:$PATH
 export HADOOP_CONF_DIR=$HOME/mycluster.conf
