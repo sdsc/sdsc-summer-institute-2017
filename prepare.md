@@ -32,9 +32,9 @@ If you have a pre-existing SDSC account, please make sure that you can login to 
 If you do not already have an SDSC account, you will be provided with one on the first day of the Summer Institute.
 
 
-#### R (statistical programming language) For Machine Learning
+#### R (statistical programming language) For Machine Learning Overview
 
-Participants who will be attending the machine learning parallel track on Thursday will need to install R (https://www.r-project.org/) and RStudio Desktop, open source edition (https://www.rstudio.com/) on their laptops. A basic understanding of R will be very helpful and we recommend the following resources:
+Participants who will be attending the Machine Learning Overview parallel session on Thursday will need to install R (https://www.r-project.org/) and RStudio Desktop open source edition (https://www.rstudio.com/) on their laptops. A basic understanding of R will be very helpful and we recommend the following resources:
 
 * https://cran.r-project.org/doc/contrib/Torfs+Brauer-Short-R-Intro.pdf
 * https://cran.r-project.org/doc/manuals/r-release/R-intro.html
