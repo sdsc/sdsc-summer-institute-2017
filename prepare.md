@@ -4,7 +4,7 @@ You will get the most out of the SDSC Summer Institute if you come well prepared
 
 ###  Computer requirements
 
-* You will need to bring your own laptop for the summer institute. This will be used both for running software locally and connecting the SDSC’s supercomputers.
+* You will need to bring your own laptop for the summer institute. This will be used both for running software locally and connecting to SDSC’s supercomputers.
 
 * For visualization tutorial a mouse with scroll wheel is highly recommended (laptop track pads are very difficult to use for 3D navigation).
 
@@ -12,11 +12,7 @@ You will get the most out of the SDSC Summer Institute if you come well prepared
 
 Please remember that basic Linux skills are necessary to complete the hands-on exercises. If it’s been a while since you’ve worked in a Linux environment, be sure to reacquaint yourself with the following topics: copying, listing, deleting and renaming files; using wildcards; navigating directories; changing file permissions; setting environment variables; using common utilities (grep, cat, less, head, sort, tar, gzip). A nice tutorial can be found here http://www.ee.surrey.ac.uk/Teaching/Unix/. You should also be comfortable with one of the standard Linux editors, such as vim, emacs, or nano.
 
-### Software requirements
-
-While many of the hands-on activities will be run on Gordon and Comet, you will also be asked to do some of the exercises on your laptop. Much of the summer institute involves two parallel sessions: a traditional HPC track and a data track. If you plan to participate in the latter, consider installing the following software before you arrive.
-
-#### Connecting to SDSC HPC systems
+### Connecting to SDSC HPC systems
 
 Since you will be using your laptop to access SDSC’s HPC systems, it is essential that you be able to run secure shell (ssh) or a similar connection tool with X11 forwarding enabled. For Mac users, running ssh is trivially easy. Just launch the Terminal application and then connect with ssh from the command line
 
@@ -31,6 +27,9 @@ If you have a pre-existing SDSC account, please make sure that you can login to 
 
 If you do not already have an SDSC account, you will be provided with one on the first day of the Summer Institute.
 
+### Software requirements
+
+While many of the hands-on activities will be run on Comet, you will also be asked to do some of the exercises on your laptop. Much of the summer institute involves two parallel sessions: a traditional HPC track and a data track. If you plan to participate in the latter, consider installing the following software before you arrive.
 
 #### R (statistical programming language) For Machine Learning Overview
 
