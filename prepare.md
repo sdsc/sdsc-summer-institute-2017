@@ -48,3 +48,45 @@ Sample data set for visualization
 Download and extract on your desktop (181 MB):
 
 https://wci.llnl.gov/content/assets/docs/simulation/computer-codes/visit/visit_data_files.tar.gz
+
+#### Singularity (software) for Containers
+
+Participants who will be attending the _How to use Singularity Containers and
+Comet Virtual Clusters_ session on Tuesday will need access to a Linux system
+that they have __root__ on with [Singularity][] installed.
+
+##### Linux System with __root__ access
+
+If you have a Linux ([Debian][], [Ubuntu][], [RedHat][], [CentOS][], [Scientific
+Linux][], etc...) laptop and have __root__ you are most of the way there and can
+skip ahead to the _Install Singularity_ sub-section.
+
+If you have a MacOS or Windows laptop you will need to create a Linux VM in
+which you have __root__ access. If you already have virtualization software
+installed and have __root__ on a Linux VM you can skip ahead to the _Install
+Singularity_ sub-section.
+
+If you don't have virtualization software installed and have admin privileges on
+your laptop we recommend you install the free Oracle [VirtualBox][] software
+(<https://www.virtualbox.org/wiki/Downloads>) and follow the User Guide
+(<https://www.virtualbox.org/manual/ch01.html#gui-createvm>) to create a Linux
+VM.
+
+We also recommend you use either the free [CentOS][] 7
+(<https://www.centos.org/download/>) or [Ubuntu][]
+(<https://www.ubuntu.com/download/desktop>) distribution when creating your VM
+only because those are the ones we have recent experience with.
+
+##### Install Singularity
+
+Now that you have a Linux system in which you have __root__ access please follow
+the instructions (<http://singularity.lbl.gov/install-linux>) to install
+[Singularity][] on Linux.
+
+[Singularity]:  http://singularity.lbl.gov/ "Singularity"
+[Ubuntu]:       https://www.ubuntu.com      "Ubuntu"
+[CentOS]:       https://www.centos.org      "CentOS"
+[RedHat]:       https://www.redhat.com      "RedHat"
+[Debian]:       http://www.debian.org       "Debian"
+[Scientific Linux]: https://www.scientificlinux.org "Scientific Linux"
+[VirtualBox]:   https://www.virtualbox.org  "VirtualBox"
