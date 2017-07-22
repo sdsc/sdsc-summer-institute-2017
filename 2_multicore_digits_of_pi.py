@@ -16,7 +16,10 @@ def inside_circle(total_count):
 def estimate_pi(n_samples, executor):
 
     n_workers = executor._max_workers
-    n_samples_inside = np.sum(list(executor.map(inside_circle, [n_samples//n_workers] * n_workers)))
+    samples_per_worker, remainder = divmod(n_samples, n_workers)
+    samples_per_worker_array = np.array([samples_per_worker] * n_workers)
+    samples_per_worker_array[:remainder] += 1
+    n_samples_inside = np.sum(list(executor.map(inside_circle, samples_per_worker_array)))
 
     return (4.0 * n_samples_inside / n_samples)
 
