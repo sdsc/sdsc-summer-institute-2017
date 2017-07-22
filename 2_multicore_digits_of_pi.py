@@ -26,6 +26,7 @@ def estimate_pi(n_samples, executor):
 if __name__=='__main__':
 
     n_samples = 10000
+    n_workers = None
     if len(sys.argv) > 1:
         n_samples = int(sys.argv[1])
         n_workers = int(sys.argv[2])
