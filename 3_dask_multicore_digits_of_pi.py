@@ -27,5 +27,5 @@ if __name__=='__main__':
     my_pi = estimate_pi(n_samples)
     sizeof = np.dtype(np.float64).itemsize
 
-    print("[dask version] pi is {} from {} samples".format(my_pi,n_samples))
-    print("[dask version] got {} digits right".format(int(np.ceil(-np.log10(abs(my_pi - np.pi))))))
+    print("pi is {} from {} samples".format(my_pi,n_samples))
+    print("error is {:.3e}".format(abs(my_pi - np.pi)))
