@@ -3,8 +3,6 @@ import sys
 import numpy as np
 import dask.array as da
 
-np.random.seed(2017)
-
 def inside_circle(total_count):
 
     x = da.random.uniform(size=total_count, chunks=total_count//48)

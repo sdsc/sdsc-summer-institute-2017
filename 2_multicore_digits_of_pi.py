@@ -2,8 +2,6 @@
 import sys
 import numpy as np
 
-np.random.seed(2017)
-
 def inside_circle(total_count):
 
     x = np.random.uniform(size=total_count)
