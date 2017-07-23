@@ -1,0 +1,25 @@
+Bootstrap: docker
+From: ubuntu:latest
+
+%runscript
+
+exec echo "The runscript is the containers default runtime command!"
+
+
+%files
+/home/tcooper/bootstrap.def /data/bootstrap.def
+
+
+%environment
+VARIABLE=HELLOWORLD
+export VARIABLE
+
+%labels
+AUTHOR tcooper@sdsc.edu
+
+
+%post
+
+apt-get update && apt-get -y install python3 git wget
+mkdir /data
+echo "The post section is where you can install, and configure your container."
