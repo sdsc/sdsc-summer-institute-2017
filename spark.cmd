@@ -9,7 +9,6 @@
 #SBATCH --nodes=2
 #SBATCH --ntasks-per-node=24
 #SBATCH --export=ALL
-#SBATCH --reservation=UCLARes
 #SBATCH -t 04:00:00
 
 export MODULEPATH=/share/apps/compute/modulefiles/applications:$MODULEPATH
