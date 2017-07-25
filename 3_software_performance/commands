@@ -1,0 +1,28 @@
+# Getting an interactive node on Comet
+srun --partition=debug --pty --nodes=1 --ntasks-per-node=24 -t 00:30:00 --wait=0 --export=ALL /bin/bash
+
+# Compiling code for top example
+icc -O3 -o lineq_top lineq_top.c -mkl
+
+
+# 1st gprof example
+ifort -pg -O3 -o gprof_ex gprof_ex.f
+time ./gprof_ex 100000000
+gprof gprof_ex gmon.out > profile_gp
+
+
+# 2nd gprof example
+icc -pg -O3 -o lineq_top lineq_top.c -mkl
+time ./lineq_top 5000
+gprof lineq_top gmon.out > profile_lineq
+
+
+
+# Thread scaling example
+icc -O3 -o thread_scaling thread_scaling.c -mkl
+export OMP_NUM_THREADS=1
+./lineq_mkl 3000
+export OMP_NUM_THREADS=2
+./lineq_mkl 3000
+export OMP_NUM_THREADS=4
+./lineq_mkl 3000
