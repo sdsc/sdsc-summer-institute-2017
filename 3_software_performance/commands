@@ -59,8 +59,8 @@ gprof lineq_top gmon.out > profile_lineq
 # Thread scaling example
 icc -O3 -o thread_scaling thread_scaling.c -mkl
 export OMP_NUM_THREADS=1
-./lineq_mkl 3000
+./thread_scaling 3000
 export OMP_NUM_THREADS=2
-./lineq_mkl 3000
+./thread_scaling 3000
 export OMP_NUM_THREADS=4
-./lineq_mkl 3000
+./thread_scaling 3000
