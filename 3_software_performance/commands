@@ -44,9 +44,9 @@ icc -O3 -o lineq_top lineq_top.c -mkl
 ./lineq_top 10000
 
 # 1st gprof example
-ifort -pg -O3 -o gprof_ex gprof_ex.f
-time ./gprof_ex 100000000
-gprof gprof_ex gmon.out > profile_gp
+ifort -pg -O3 -o gprof_ex1 gprof_ex1.f
+time ./gprof_ex1 100000000
+gprof gprof_ex1 gmon.out > profile_gp
 
 
 # 2nd gprof example
