@@ -41,6 +41,6 @@ Network file systems - good for small number of large files
 
 Files are broken into stripes and each stripe stored on individual OSTs
 
-**stripe count** is the number of targets the file chunks are going to be written to. **Not** the total number of chunks.
-**stripe size** is the size of each chunk
+ * **stripe count** is the number of targets the file chunks are going to be written to. **Not** the total number of chunks.
+ * **stripe size** is the size of each chunk (try to align size of write operations with stripe size for best performance)
 
