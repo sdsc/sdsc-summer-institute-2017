@@ -1,3 +1,35 @@
+# Getting processor info
+less /proc/cpuinfo
+grep processor /proc/cpuinfo
+grep 'physical id' /proc/cpuinfo 
+
+# Getting memory info
+less /proc/meminfo
+
+# Getting GPU info
+nvidia-smi
+
+# Getting cache info
+cd /sys/devices/system/cpu
+cd cpu0/cache
+cd index0
+
+# Getting SCSI device info
+cat /proc/scsi/scsi
+
+# Getting mounted file system
+less /etc/mtab
+df -h
+
+# Getting network information
+/sbin/ip link
+
+# Getting OS and kernel info
+uname -r
+uname -o
+uname -a
+cat /etc/centos-release
+
 # Getting an interactive node on Comet
 srun --res=SI2017DAY1 --pty --nodes=1 --ntasks-per-node=24 -t 00:30:00 --wait=0 --export=ALL /bin/bash
 
