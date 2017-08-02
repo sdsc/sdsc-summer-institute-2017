@@ -1,0 +1,58 @@
+------------------------------------------------------------------------
+SDSC Summer Institute
+August 3, 2017
+
+Material by Andreas Goetz (agoetz@sdsc.edu)
+partly based on work by Mark Harris - NVIDIA corporation
+
+Directory content as explained below
+------------------------------------------------------------------------
+
+./saxpy/
+
+saxpy.c
+C program that performs single precision vector addition (y = a*x + y)
+Can be compiled with standard C compiler or PGI pgcc compiler with
+accelerator directives
+
+pgcc saxpy.c -o saxpy-cpu.x
+pgcc saxpy.c -acc -Minfo=accel -o saxpy-gpu.x
+
+------------------------------------------------------------------------
+
+./laplace-2d/
+
+jacobi.c
+jacobi.f90
+C and Fortran versions of a Jacobi solver for 2D Laplace equation.
+Compile with
+
+module load pgi
+pgf90 jacobi.f90 -fast -o jacobi-pgf90.x
+./jacobi-pgf90.x      # completes in 48 seconds
+
+pgcc jacobi.c -fast -o jacobi-pgcc.x
+./jacobi-pgcc.x       # completes in 69 seconds
+
+pgf90 jacobi-omp.f90 -fast -mp -Minfo=mp -o jacobi-pgf90-omp.x
+export OMP_NUM_THREADS=2
+./jacobi-pgf90-omp.x   # completes in 24 seconds
+export OMP_NUM_THREADS=4
+./jacobi-pgf90-omp.x   # completes in 16 seconds
+export OMP_NUM_THREADS=6
+./jacobi-pgf90-omp.x   # completes in 15 seconds
+
+pgcc jacobi-omp.c -fast -mp -Minfo=mp -o jacobi-pgcc-omp.x
+export OMP_NUM_THREADS=2
+./jacobi-pgcc-omp.x    # completes in 36 seconds
+export OMP_NUM_THREADS=4
+./jacobi-pgcc-omp.x    # completes in 22 seconds
+export OMP_NUM_THREADS=6
+./jacobi-pgcc-omp.x    # completes in 17 seconds
+
+pgf90 jacobi-acc.f90 -acc -Minfo=accel -o jacobi-pgf90-acc.x
+./jacobi-pgf90-acc.x   # completes in 4 seconds
+
+pgcc jacobi-acc.c -acc -Minfo=accel -o jacobi-pgcc-acc.x
+./jacobi-pgcc-acc.x   # completes in 5 seconds
+
