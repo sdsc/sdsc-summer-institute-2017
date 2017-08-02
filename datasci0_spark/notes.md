@@ -1,14 +1,3 @@
-
-See previous notes at: <https://github.com/sdsc/sdsc-summer-institute-2017>
-
-See solution to git advanced exercise <https://github.com/zonca/conversion_tofix>
-
-# GPU
-
-What are you guys doing?
-PLEASE TAKE NOTES FOR US
-
-
 # SPARK
 
 1. login to comet
