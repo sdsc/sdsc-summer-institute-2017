@@ -1,5 +1,5 @@
 # Obtaining a Comet compute node for 3 hours
-srun --partition=debug --pty --nodes=1 --ntasks-per-node=24 -t 03:00:00 --wait=0 --export=ALL /bin/bash
+srun --reservation=SI2017DAY3 --pty --nodes=1 --ntasks-per-node=24 -t 03:00:00 --wait=0 --export=ALL /bin/bash
 
 # Note on CPU binding. A few of the Gordon compute nodes may have
 # missed installation of patch that regulates clock speed when core 0
