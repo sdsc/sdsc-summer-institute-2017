@@ -1,27 +1,28 @@
 ---
 title: "Classifying Weather Data"
-author: "Mai H. Nguyen"
-date: "2017-07-20”
+author: "SDSC Summer Institute 2017, Mai H. Nguyen"
+created: "2017-07-20"
+date: "`r Sys.time()`"
 output: html_document
 ---
 
-#### Preliminaries
-##### Get data from rattle library
-```{r getData, eval=TRUE, echo=TRUE}
+### Preliminaries
+#### Get data from rattle library
+```{r getData}
 library(rattle)
 df <- weather
 dim(df)
 ```
 
-##### Remove variable RISK_MM, which is the same as Rainfall for the next day
-```{r  removeRiskMM, eval=TRUE, echo=TRUE}
+#### Remove variable RISK_MM, which is the same as Rainfall for the next day
+```{r  removeRiskMM}
 df$RISK_MM <- NULL
 dim(df)
 ```
 
-#### Partition Data
-##### Divide data into train and test sets
-```{r partition, eval=TRUE, echo=TRUE}
+### Partition Data
+#### Divide data into train and test sets
+```{r partition}
 
 # Randomly select 70% of samples from dataset
 set.seed(765)                     # Set seed for reproducibility
@@ -43,16 +44,16 @@ table(df.tst$RainTomorrow)/nrow(df.tst)
 # summary(df.tst)
 
 # Save datasets. 
-# write.csv(df.trn, "data/weather-trn.csv",row.names=FALSE)  # Save as CSV files
-# write.csv(df.tst, "data/weather-tst.csv",row.names=FALSE)
-saveRDS(df.trn, "data/weather-trn.rds")                      # Save as RDS files
-saveRDS(df.tst, "data/weather-tst.rds")
+# write.csv(df.trn, "weather-trn.csv",row.names=FALSE)  # Save as CSV files
+# write.csv(df.tst, "weather-tst.csv",row.names=FALSE)
+saveRDS(df.trn, "weather-trn.rds")                      # Save as RDS files
+saveRDS(df.tst, "weather-tst.rds")
 ```
 
 
-#### Analyses
-##### Classification using Decision Tree - Predicting whether it will rain tomorrow
-```{r tree,eval=TRUE,echo=TRUE}
+### Analyses
+#### Classification using Decision Tree - Predicting whether it will rain tomorrow
+```{r tree}
 library(rpart)
 library(rpart.plot)
 
@@ -85,8 +86,8 @@ err <- (1 - (sum(pred.tst==df.tst$RainTomorrow)) / nrow(df.tst))    # Misclassif
 paste("Error on TEST Data: ", err)
 ```
 
-#### Prune tree if necessary
-```{r pruneTree, eval=TRUE, echo=TRUE}
+### Prune tree if necessary
+```{r pruneTree}
 
 # Get min complexity parameter value from tree
 cp.best <- tree.model$cptable[which.min(tree.model$cptable[,"xerror"]),"CP"]
@@ -100,8 +101,8 @@ paste("Error on TEST Data (Pruned Tree): ", err)
 
 ```
 
-#### Classification using Random Forest - Predicting whether it will rain tomorrow
-```{r rf,eval=TRUE,echo=TRUE}
+### Classification using Random Forest - Predicting whether it will rain tomorrow
+```{r rf}
 library(randomForest)
 
 # Build random forest from training data.
@@ -116,17 +117,27 @@ importance(rf.model)
 varImpPlot(rf.model)
 ```
 
-#### Evaluate random forest
-```{r rftest, eval=TRUE, echo=TRUE}
+### Evaluate random forest
+```{r rftest}
+# Evaluate RF model on test dataset
+rf.pred.tst <- predict(rf.model,newdata=df.tst)    
+table(actual=df.tst$RainTomorrow,predicted=rf.pred.tst)                         # Confusion matrix
+err <- (1 - (sum(rf.pred.tst==df.tst$RainTomorrow, na.rm=TRUE)) / 
+          sum(complete.cases(df.tst)))                                          # Misclassification error.Ignore NAs
+paste("RF Error on TEST Data: ", err)
+```
+
+### Impute missing values, then evaluate random forest
+```{r rfimptest}
 
 # Impute missing values
 sum(is.na(df.tst))                                     # Number of NAs before imputation
 df.tst.imp <- rfImpute(RainTomorrow ~ ., data=df.tst)  # Impute missing values 
 sum(is.na(df.tst.imp))                                 # Number of NAs after imputation
 
-# Evaluate RF model on test dataset
-rf.pred.tst <- predict(rf.model,newdata=df.tst.imp)    
-table(actual=df.tst.imp$RainTomorrow,predicted=rf.pred.tst)                 # Confusion matrix
-err <- (1 - (sum(rf.pred.tst==df.tst.imp$RainTomorrow)) / nrow(df.tst.imp)) # Misclassification Error
+# Evaluate RF model on test dataset with imputed values for missing data
+rf.pred.imp.tst <- predict(rf.model,newdata=df.tst.imp)    
+table(actual=df.tst.imp$RainTomorrow,predicted=rf.pred.imp.tst)                 # Confusion matrix
+err <- (1 - (sum(rf.pred.imp.tst==df.tst.imp$RainTomorrow)) / nrow(df.tst.imp)) # Misclassification Error
 paste("RF Error on TEST Data: ", err)
 ```
