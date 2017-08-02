@@ -24,6 +24,10 @@ This presentation will provide an overview of using Singularity containers and V
 - [Github Repos](https://github.com/hpcdevops/)
 - [ASCII Casts](https://asciinema.org/~hpcdevops)
 
+- [HPC @ NIH Singularity Page](https://hpc.nih.gov/apps/singularity.html)
+- [Singularity: Containers for Science](http://www.hpcadvisorycouncil.com/events/2017/stanford-workshop/pdf/GMKurtzer_Singularity_Keynote_Tuesday_02072017.pdf)
+- [PEARC17 - Containers for Science - Sigularity Registry](https://docs.google.com/presentation/d/14-iKKUpGJC_1qpVFVUyUaitc8xFSw9Rp3v_UE9IGgjM/pub?start=false&loop=false&delayms=3000&slide=id.g1e5668383c_0_216)
+
 ### Tools
 
 - [Reveal.js](https://github.com/hakimel/reveal.js)
